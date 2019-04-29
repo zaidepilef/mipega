@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+</head>
+<body>
+{% ifequal cant_resultados 0 %}
+<div class="panel panel-default">
+  <div class="panel-body">
+      <h2>Resultados rápidos</h2>
+      <p><i>No se encontraron resultados para los paremetros de busqueda seleccionados.</i></p>
+  </div>
+</div>
+{% else %}
+
+<div class="panel panel-default">
+  <div class="panel-body">
+      <h2>Resultados rápidos</h2>
+      <table class="table">
+          <thead>
+              <tr>
+                  <th>Folio</th>
+                  <th>Nombre</th>
+                  <th>Edad</th>
+              </tr>
+          </thead>
+          <tbody>
+            {% for r in resultados_busqueda %}
+              <tr>
+                  <td><a href="{% url 'vista_detalle_socio' r.id %}">{{r.folio}}</a></td>
+                  <td>{{r.nombre}}</td>
+                  <td>{{r.descripcion}}</td>
+              </tr>
+            {% endfor %}
+
+          </tbody>
+      </table>
+      <a href="#" id="indice" class="btn btn-primary pull-right">Ver más resultados ({{cant_resultados}})</a>
+  </div>
+</div>
+
+<script type="text/javascript">
+    $('#indice').on('click',function(e){
+      e.preventDefault();
+      $("#id_form").attr("action", "{% url 'vista_resultados_completos' %}");
+      $("input[name=csrfmiddlewaretoken]").remove();
+      $("#id_form").attr("method", 'GET');
+      $("#id_form").submit();
+
+    });
+    /*
+
+    $.ambiance({message: "Se han encontrado {{cant_resultados}} resultados para esta busqueda.",type:"success",timeout:4,width:300,});
+    $(".media").show();
+    $(".result").animate({
+        height: "560px",
+        padding: "15px"
+    }, 500);
+    $("#indice").show();
+    var mensaje = "{{mensaje}}";
+    if (mensaje != ""){
+      $.ambiance({message: mensaje, title:"Debug",
+                  type: "info",timeout:4,width:200,});
+    }*/
+</script>
+{% endifequal %}
+</body>
+
+</html>

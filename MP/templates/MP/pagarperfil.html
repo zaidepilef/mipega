@@ -1,0 +1,25 @@
+{% extends 'template.html' %}
+{% block title %} Pago de susbcripcion | Joblist.cl {% endblock %}
+{% block contenido %}
+
+<div class="container">
+	<div class="row">
+		<div class="col-sm-8 col-sm-offset-2" style="margin-top:10%;margin-bottom:10%;">
+			{% ifequal info.validador 1 %}
+				<p>Su cuenta aun se encuentra activa</p>
+				<p>hasta: {{info.fecha_fin}}</p>
+			{% else %}
+				<form  action="https://pagos.joblist.cl/inicio" method="post">
+			       
+					{% csrf_token %}
+			        <div class="block-form-pane">
+			        	{{pago_form}}
+			        </div>
+			        <input class="pull-right btn btn-primary" type="submit" value="Pagar subscripción">
+			    </form>
+			{% endifequal %}
+		</div>
+	</div>
+</div>
+
+{% endblock %}

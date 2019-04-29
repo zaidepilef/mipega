@@ -1,0 +1,419 @@
+div#aviso{
+    position: fixed;
+    width: 200px;
+    height: 350px;
+    top: 170px;
+    left: 5px;
+    padding: 5px;
+    background-color: rgba(240, 229, 108, 0.8);
+    overflow-y: scroll;
+    .border-radius;
+    .box-shadow(1px,1px,8px,0px,rgb(0,0,0));
+}
+input[value="Registrar"]{
+    margin: 5px;
+    display: none;
+}
+.alert{
+    margin-top: 150px;
+}
+#content{
+    margin-top:0px;
+}
+#controls{
+    a{
+        margin: 5px;
+    }
+}
+
+
+#session_pane, #study_pane, #other_pane, #last, #other_pane2{
+
+    .inline_group{
+        display: inline-block;
+    }
+    
+    h1, h2{
+        /*width: 240px;*/
+        text-align: center;
+        background-color: #428bca;
+        border-color: #428bca;
+        color: #fff;
+        font-weight: bold;
+        padding: 10px;
+        text-transform:uppercase;
+        font-size: 30px;
+        position: absolute;
+        .box-shadow(2px,2px,5px,0px,rgba(0, 0, 0, 0.3));
+        .border-radius(2px);
+        left: 60px;
+        z-index:10;
+        
+        &#seccion_personal{
+            right: 400px;
+            left: initial;
+        }
+    }
+    
+    h2{
+        width: 390px;
+        
+        &#seccion_superiores{
+            
+            right: 250px;
+            left: initial;
+        }
+    }
+    #superiores{
+        #escolar1{
+            div{
+                width: 30%;
+            }
+        }
+        
+        #postgrados{
+            display: inline-block;
+            width: 100%;
+            
+            .checkbox{
+            
+                margin-top: 0px;
+                margin-bottom: 10px;
+                margin-left: 10px;
+                width: 50%;
+                
+                label{
+                    width: 50%;
+                }
+                input[type="checkbox"]{
+                    margin: 5px;
+                    padding: 5px;
+                    width: 15px;
+                    height: 15px;
+                }         
+            }  
+        }
+    }
+    
+    
+    .special-form-pane{
+        background-color: rgba(66, 139, 202, 0.2);
+        padding: 10px;
+        padding-top: 20px;
+        border-style: solid;
+        border-radius: 3px;
+        border-color: #717680;
+        border-width: 5px;
+        overflow: hidden !important;
+        width: 50%;
+        display:inline-block;
+        margin: 30px;
+        margin-top: 60px;
+        
+        &#experiencias{
+        
+            .inline_group{
+                width: 30%;
+                
+                select{
+                    width: 100%;
+                }
+            }
+            
+            #escolar2{
+                width: 100%;
+                padding: 0px;
+                
+                .form_group{
+                    padding: 0px;
+                    width: inherit;
+                    
+                    textarea{
+                    
+                    }
+                }
+            }
+        }
+        .plus-button{
+            padding: 1px;
+            width: 35px;
+            height: 35px;
+            margin-left: 6%;
+            margin-bottom: 3%;
+            .border-radius(10px);
+            
+            span{
+                line-height: 1.7;
+                font-size: 22px;
+            }
+        }
+        
+        .hidden-form{
+            display: none;
+        }
+        
+        &#habilidades{
+            .inline_group{
+                width: 200px;
+                margin: 0px 40px;
+            }
+        }
+        
+        .line{
+            p{
+                display: inline;
+                float: left;
+                line-height: 30px;
+            }
+            .plain-field{
+                margin: 0px 5px;
+                height: 30px;
+                width: 120px !important;
+                background-color: rgba(66, 139, 202, 0.005);
+                border: 0px;
+                .box-shadow(0px,0px,0px,0px,rgba(0,0,0,0)) !important;
+                border-bottom-style: solid;
+                border-width: 1px;
+                padding: 0px;
+                .border-radius(0px);
+                
+                &:focus{
+                    background-color: rgba(66, 139, 202, 0.05);
+                }
+            }     
+        }   
+    }
+    
+    .form-help-block{
+        display: inline-block;
+        width: 40%;
+        padding: 15px;
+        position: absolute;
+        z-index: -1;
+        
+        &.right-block{
+            border-left-style: dotted;
+        }
+        &.left-block{
+            border-right-style: dotted;
+        }
+    }
+}
+
+
+
+div#session_pane,div#last{   
+    
+    label{
+        float: left;
+        clear: both;
+        margin-right: 100%;
+        display: inline-block;
+        overflow: hidden;
+        white-space: nowrap;
+        margin-left: 18%;
+    }
+    .form-control{
+        margin-left: 18%;
+        float: left;
+    }    
+    
+    #contact, #personal{
+        overflow: auto;
+        margin-bottom: 15px;
+        
+        div{
+            float: left;
+            padding-left: 20px;
+        }        
+        
+        
+        .form-control{            
+            width: 200px;        
+        }       
+        select.form-control{
+            margin-left: 18%;
+        }
+    }
+}
+
+div#last{
+    
+
+    .form-group{
+        width:200px;
+        
+        select.form-control{
+            width: 150px;
+        }
+    }
+    #aspiraciones{
+        overflow-y: hidden;
+        
+        .inline_group{
+            ul.chosen-choices{
+                border-color: #ccc;
+            }
+            &:first-child{
+                width: 35%;
+                margin: 5px;
+                padding-left: 40px;
+                &+.inline_group{
+                    width: 35%;
+                    margin: 5px;
+                    padding-left: 40px;
+                }
+            }
+        }
+    }
+}
+
+div#escolar1{
+    width: 100%;
+    margin: 20px auto;
+    padding: 0px !important;
+    
+    p{
+        clear: both;
+        padding-left: 7%;
+        font-weight: bold;
+        margin: 10px 0px;
+        font-size: 15px;
+    }
+    
+}
+
+div#surprise-message{
+
+    width: 100%;
+    height: 0px;    
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-color: rgba(0,0,0,0.7);
+    z-index: 100;
+
+    .panel{
+        display: none;
+        margin: 100px auto;
+        width: 60%;
+        height: 350px;
+        
+        panel-body{
+            height: 100%;
+
+            p{
+                font-size: 15px;
+            }
+            
+            a{
+                position: relative;
+                bottom: 0px;
+                margin-top: 120px;
+            }        
+        }
+    }
+}
+
+div#_escolar1{
+    margin:20px auto;
+}
+#id_comentario{
+    
+    width:100%;
+    min-width: 465px;
+}
+
+div#study_pane,div#other_pane,div#other_pane2{
+
+    
+    
+    #escolar, #superiores, #experiencias{
+        min-height: 150px;
+        overflow: auto;
+        div{
+            float: left;
+            padding-left: 20px;
+        }        
+        
+        label{
+            float: left;
+            clear: both;
+            margin-right: 100%;
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            margin-left: 10%;
+        }
+        .form-control{
+            margin-left: 10%;
+            float: left;
+        }        
+        textarea.form-control{
+            margin-left: 15%;
+            max-width: 550px !important;
+        }
+        Select.form-control{
+            margin-left:10%;
+            width: 200px;        
+        }       
+    }
+}
+#alone{
+
+    label{
+        margin-left:0px !important;
+    }
+    textarea{
+        
+        width: 100px;
+        min-width: 530px;
+        margin-left:0px !important;
+    }
+}
+div#other_pane{    
+    #habilidades{
+        div{
+            float: left;
+            padding-left: 20px;
+        }
+        min-height: 100px;        
+        width: 100%;
+        
+        .form_group{
+            float: left;
+            padding-left: 40px;
+            min-height: 100px;
+        }
+        .form_group + .form_group {
+            padding-left: 20px;
+        }
+        #alone{
+            padding-left: 40px;
+        }
+        label{
+            float: left;
+            clear: both;
+            margin-right: 100%;
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            margin-left: 10%;
+        }
+        .form-control{
+            margin-left: 10%;
+            float: left;
+        }        
+
+        Select.form-control{
+            margin-left:10%;
+            width: 200px;        
+        }       
+    }
+}
+
+#controls{
+    margin: 0px auto;
+    width: 105px;
+}
+

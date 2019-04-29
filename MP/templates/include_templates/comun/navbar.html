@@ -1,0 +1,51 @@
+<div id="nav">
+  <nav id="navbar" class="navbar navbar-inverse navbar-static-top" role="navigation">
+    <!-- We use the fluid option here to avoid overriding the fixed width of a normal container within the narrow content columns. -->
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-8">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="{% url 'vista_principal' %}"><img src="{{STATIC_URL}}img/logo-mipega.png" alt=""></a>
+      </div>
+
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-8">
+
+          {% if user.is_authenticated and user.is_active%}
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="{% url 'vista_pagoperfil' %}"><span class="glyphicon glyphicon-usd"></span> Pagar Suscripción</a></li>
+                <li><a href="{% url 'vista_bandejaentrada' %}"><span class="glyphicon glyphicon-envelope"></span> Mensajes {% if not CANTIDAD_MENSAJES == 0 %}<span class="badge badge-warning">{{CANTIDAD_MENSAJES}}</span>{% endif %}</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown dropup">
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown">¡Hola {{NOMBRE_USUARIO}}! <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{% url 'vista_editarperfil' %}">Editar perfil</a></li>
+                        <li><a href="{% url 'vista_nuevaclave' %}">Cambiar contraseña</a></li>
+                        <li><a href="{% url 'vista_pagoperfil' %}">Pagar suscripción</a></li>
+                        <li class="divider"></li>
+                        <li><a href="{% url 'vista_logout' %}">Cerrar sesión</a></li>
+                    </ul>
+                </li>
+
+                <!-- <li><img class="img-circle nav-img-profile" data-src="holder.js/55x55" alt=""></li> -->
+
+            </ul>
+          {% else %}
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="#" data-toggle="modal" data-target="#modal-login">Iniciar sesión</a></li>
+              <li><a href="{% url 'vista_registro' %}">Registrarse</a></li>
+              <li><a href="#">Contáctenos </a></li>
+              <li><a href="#">Términos y condiciones</a></li>
+            </ul>
+          {% endif %}
+
+      </div><!-- /.navbar-collapse -->
+    </div>
+  </nav>
+</div>

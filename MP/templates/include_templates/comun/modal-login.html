@@ -1,0 +1,22 @@
+<div class="modal fade bs-modal-sm" id="modal-login" tabindex="-1" role="dialog" aria-labelledby="modal-login-label" aria-hidden="true">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <form action="{% url 'vista_login' %}" method="post" id="login-form">
+            <div class="modal-body">
+              {% csrf_token %}
+              {{FORM_LOGIN}}
+              {{fo_rmLogin}}
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox"> Recordarme
+                </label>
+              </div>
+              <p>
+                <a href="{% url 'password_reset' %}">Olvidé mi contraseña</a>
+              </p>
+              <input class="btn btn-primary pill-right" type="submit" value="Iniciar Sesión">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>

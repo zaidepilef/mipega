@@ -1,0 +1,105 @@
+<section class="step" data-step="1" data-step-title="Perfil">
+    <div class="bs-callout bs-callout-info">
+        <h3>Perfil</h3>
+        <p>A continuación debe completar los siguientes formularios con sus datos de cuenta, personales y de contacto. Los campos marcados con un * son obligatorios.</br>
+        Su  RUT o numero de pasaporte no será visible por quienes usen la aplicación y solo se usará como su usuario para ingresar a su cuenta.</p>
+    </div>
+    <h3 class="page-header">Cuenta</h3>
+
+    <div class="alert alert-warning">El <b>nombre</b> sirve para que puedan identificarlo en las busquedas, sin embargo, no es obligatorio. Si no lo ingresa, será reconocido por un folio que se asignará automaticamente.</div>
+
+    <div class="form-group">
+        <label for="inputPassword" class="col-sm-2 control-label">Nombre</label>
+        <div class="col-sm-10">
+            <!--<input type="text" class="form-control" id="inputPassword" placeholder="">-->
+            {{form_socio.nombre}}
+        </div>
+    </div>
+     <div class="alert alert-warning">Si su nacionalidad es chilena registrese utilizando su <b>RUT</b>, en caso contrario utilice el <b>Numero de Pasaporte</b>. El <b>Numero de Pasaporte</b> o <b>RUT</b> sirve para iniciar sesión y no sera visible para nadie mas que usted. </div>
+    <div class="form-group">
+        <label for="inputPassword" class="col-sm-2 control-label">RUT o Número de Pasaporte*</label>
+        <div class="col-sm-10">
+            <!--<input type="text" class="form-control" id="inputPassword" placeholder="">-->
+            {{form_user.username}}
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputPassword" class="col-sm-2 control-label">Contraseña*(se recomienda un mínimo de 4 caracteres)</label>
+        <div class="col-sm-10">
+            <!--<input type="password" class="form-control" id="inputPassword" placeholder="">-->
+            {{form_user.password}}
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputPassword" class="col-sm-2 control-label">Repita su contraseña*</label>
+        <div class="col-sm-10">
+            {{form_user.ClaveRepetida}}
+        </div>
+    </div>
+    <h3 class="page-header">Personal</h3>
+    <div class="form-group">
+        <label for="inputPassword" class="col-sm-2 control-label">Género</label>
+        <div class="col-sm-10">
+            {{form_socio.sexo}}
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputPassword" class="col-sm-2 control-label">Hijos</label>
+        <div class="col-sm-10">
+            {{form_socio.tiene_hijos}}
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputPassword" class="col-sm-2 control-label">Estado Civil</label>
+        <div class="col-sm-10">
+            {{form_socio.estado_civil}}
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputPassword" class="col-sm-2 control-label">Edad</label>
+        <div class="col-sm-10">
+            {{form_socio.edad}}
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputPassword" class="col-sm-2 control-label">Nacionalidad</label>
+        <div class="col-sm-10">
+            {{form_socio.nacionalidad}}
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputPassword" class="col-sm-2 control-label">¿Disponibilidad inmediata?</label>
+        <div class="col-sm-10">
+            {{form_socio.disponibilidad}}
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputPassword" class="col-sm-2 control-label">¿Disponibilidad de vehículo?</label>
+        <div class="col-sm-10">
+            {{form_socio.disponibilidadV}}
+        </div>
+    </div>
+    <h3 class="page-header">Contacto </h3>
+    <div class="alert alert-warning">El correo electronico es de caracter confidencial y solo será utilizado para enviar mensajes de contacto que no seran visibles para nadie mas que ud.</div>
+    <div class="form-group">
+        <label for="inputPassword" class="col-sm-2 control-label">E-Mail de contacto</label>
+        <div class="col-sm-10">
+            {{form_user.email}}
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputPassword" class="col-sm-2 control-label">Declarar número celular como un dato público</label>
+        <div class="col-sm-10">
+            {{form_socio.disponibilidadV}}
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputPassword" class="col-sm-2 control-label">Celular de contacto</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputPassword" placeholder="ej:+569 91234567">
+        </div>
+    </div>
+
+</section>
+
+

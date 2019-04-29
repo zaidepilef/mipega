@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="google-site-verification" content="xOgtO7OvV44Wf2MQEur6P9OGbYVR8zPNkQrhqMY9SiQ" />
+    <title>{% block title %} MiPega.cl {% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Jorge Palavecino"/>
+    <meta name="robots" content="noindex,nofollow" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
+
+    <!-- Le styles -->
+    <!--<link href="{{STATIC_URL}}bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" media="screen"/>-->
+    <link href="{{STATIC_URL}}css/style.css" rel="stylesheet"/>
+    <link href="{{STATIC_URL}}img/logo-mipega.png" rel="shortcut icon"/>
+    <link href="{{STATIC_URL}}css/slider.css" rel="stylesheet"/>
+    <!--<link href="{{STATIC_URL}}bootstrap/dist/css/bootstrap-responsive.min.css" rel="stylesheet"/>-->
+    <link href="{{STATIC_URL}}css/bootstrap-glyphicons.css" rel="stylesheet"/>
+    <link href="{{STATIC_URL}}css/estilo.css" rel="stylesheet/less" type="text/css"/>
+    <!--<link href="{{STATIC_URL}}css/slidingForm.css" rel="stylesheet" type="text/css" media="screen"/>
+    <link href="{{STATIC_URL}}css/hopscotch-0.1.1.min.css" rel="stylesheet" type="text/css" media="screen"/>-->
+    <link href="{{STATIC_URL}}css/jquery.ambiance.css" rel="stylesheet" type="text/css" media="screen"/>
+    <link href="{{STATIC_URL}}css/chosen.css" rel="stylesheet" type="text/css" media="screen"/>
+
+</head>
+
+<body>
+    <div id = "warning">
+        <!--[if IE 6]>
+        <p>
+            La versión de Internet Explorer que est&aacute;s utilizando
+            no está actualizada. <br />
+            Este sitio funcionar&aacute; mejor si actualizas tu navegador.
+            <a href="http://www.microsoft.com/latam/windows/internet-explorer/">Actualizar Internet Explorer</a>
+        </p>
+        <![endif]-->
+        <noscript>
+            <p>
+                Es necesario que tengas activado Javascript en su navegador
+                para utilizar todas las funciones de este sitio.
+                <a href="#">
+                    &iquest;C&oacute;mo activar Javascript?
+                </a>
+            </p>
+        </noscript>
+    </div><!-- #warning -->
+
+
+
+    <!--<div id="msg">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="message {% if message.tags %}{{ message.tags }}{% endif %}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    </div>--><!-- #fixed_msg-->
+
+    <!--
+    <div class="header">
+        <img src="{{STATIC_URL}}img/mipegalogo.png" id="logo">
+        <h1><a href="/">Mi Pega.cl</a></h1>
+        <div class="sesion-buttons">
+            {% if user.is_authenticated and user.is_active%}
+                <h5>Bienvenido <strong>{{user.username}}</strong>!  </h5>
+                <div id="session_links"><a href="{% url 'vista_logout' %}">Cerrar Sesión</a><a href="{% url 'vista_editarperfil' %}">Perfil</a></div>
+            {% else %}
+                <a href="{% url 'vista_login' %}">Ingresar</a>
+                <a href="{% url 'vista_registro' %}">Registrarse</a>
+            {% endif %}
+
+        </div>
+    </div>--><!-- #header -->
+            {% include "include_templates/comun/navbar.html" %}
+            {% block portada %}
+            {% endblock %}
+
+            {% include "include_templates/comun/modal-login.html" %}
+
+
+            {% block contenido %}
+            {% endblock %}
+
+            {% include "include_templates/comun/footer.html" %}
+
+    <!-- #content -->
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{{STATIC_URL}}js/jquery.js"></script>
+
+    <script type="text/javascript" src="{{STATIC_URL}}js/plugins.js"></script>
+    <script type="text/javascript" src="{{STATIC_URL}}js/tour.js"></script>
+    <script type="text/javascript" src="{{STATIC_URL}}js/jquery.scrollTo-1.4.3.1-min.js"></script>
+    <script type="text/javascript" src="{{STATIC_URL}}js/script.js"></script>
+    <script type="text/javascript" src="{{STATIC_URL}}js/bootstrap-slider.js"></script>
+    <script type="text/javascript" src="{{STATIC_URL}}js/hopscotch-0.1.1.min.js"></script>
+    <script type="text/javascript" src="{{STATIC_URL}}js/sliding.form.js"></script>
+    <!--<script src="{{STATIC_URL}}js/more.js"></script>-->
+    <script type="text/javascript" src="{{STATIC_URL}}js/vendor/holder.js"></script>
+    <script type="text/javascript" src="{{STATIC_URL}}js/vendor/jquery.js"></script>
+    <script type="text/javascript" src="{{STATIC_URL}}js/vendor/bootstrap.min.js"></script>
+    <script type="text/javascript" src="{{STATIC_URL}}js/vendor/waypoints.min.js"></script>
+    <script type="text/javascript" src="{{STATIC_URL}}js/vendor/waypoints-sticky.js"></script>
+
+    <script type="text/javascript" src="{{STATIC_URL}}js/jquery.noty.js"></script>
+    <script type="text/javascript" src="{{STATIC_URL}}js/jquery.ambiance.js"></script>
+    <script type="text/javascript" src="{{STATIC_URL}}js/chosen.jquery.js"></script>
+    <script type="text/javascript" src="{{STATIC_URL}}js/validarut.js"></script>
+    <!--<script type="text/javascript" src="{{STATIC_URL}}js/jquery.ui.draggable.js"></script>-->
+    <script type="text/javascript">
+     $('#navbar').waypoint('sticky');
+        {% if messages %}
+            $(document).ready(function(){
+                {% for message in messages %}
+                    $.ambiance({message: "{{message}}",
+                        {% ifequal message.tags "info" %}title:"Informacion",{% endifequal %}
+                        {% ifequal message.tags "warning" %}title:"Advertencia",{% endifequal %}
+                        {% ifequal message.tags "error" %}title:"Error",{% endifequal %}
+                        {% ifequal message.tags "success" %}title:"Aviso",{% endifequal %}
+
+                        type: "{{message.tags}}",
+                        timeout:6,
+                        width:400,
+                    });
+                {% endfor %}
+            });
+
+        {% endif %}
+    </script>
+
+    {% block SCRIPT %}
+
+
+
+    {% endblock %}
+</body>
+</html>

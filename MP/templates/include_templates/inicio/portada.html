@@ -1,0 +1,82 @@
+<div id="landing">
+  <div id="landing-video">
+    <img src="{{STATIC_URL}}img/ff.png">
+    <link rel="stylesheet" href="static/css/app.css">
+    </img>
+  </div>
+  <div id="landing-content">
+    <div class="container">
+        <h1 align="center"> ¡Hola! </h1>
+      <div class="row">
+        <div class="col-sm-12">
+
+        </div>
+         {% if user.is_authenticated and user.is_active%}
+        <div class="col-sm-6 ">
+          <h2> Realiza tu suscripción ahora! accede a cientos de posibilidades laborales de todo el país</h2>
+              <a href="{% url 'vista_pagoperfil' %}" class="btn btn-primary btn-lg">Suscribirse</a>
+          <p class="lead"> acceda a su perfil.</p>
+              <a href="{% url 'vista_editarperfil' %}" class="btn btn-primary btn-lg">Mi Perfil</a>
+          {% else %}
+          <div class="col-sm-6 ">
+          <h2>Esta es tu oportunidad, ahora el trabajo te busca a ti!</h2>
+          <p class="lead"> regístrate para ser el candidato perfecto.</p>
+              <a href="{% url 'vista_registro' %}" class="btn btn-primary btn-lg">Regístrate</a>
+          {% endif %}
+        {% if user.is_authenticated and user.is_active%}
+        {% else %}
+        </div>
+        <div class="col-sm-6 text-center">
+          <h2>¿Buscas personal?</h2>
+          <p class="lead">Tenemos la persona que necesitas</p>
+          <a href="#buscador" class="hi-icon hash"><span class="glyphicon glyphicon-search"></span></a>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+<div id="landing">
+  <div id="landing-video">
+      <img src="{{STATIC_URL}}img/1414.jpg" type="i">
+    </img>
+  </div>
+  <div id="landing-content">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+            <h1>¡Hola!</h1>
+        </div>
+        <div class="col-sm-6 ">
+          <h2>Esta es su oportunidad, basta de buscar trabajo. ¡Deje que el trabajo lo busque a usted!</h2>
+          <p class="lead"> Estará disponible para ser contactado con absoluta privacidad por toda la oferta de empleo del país.</p>
+          {% if user.is_authenticated and user.is_active%}
+              <a href="{% url 'vista_editarperfil' %}" class="btn btn-primary btn-lg">Tu Perfil</a>
+          {% else %}
+              <a href="{% url 'vista_registro' %}" class="btn btn-primary btn-lg">Regístrese</a>
+          {% endif %}
+
+        </div>
+        <div class="col-sm-6 text-center">
+          <h2>¿Busca personal?</h2>
+          <p class="lead">Tenemos la persona ideal</p>
+          <a href="#buscador" class="hi-icon hash"><span class="glyphicon glyphicon-search"></span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+-->

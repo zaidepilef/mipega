@@ -1,0 +1,284 @@
+{% extends 'template.html' %}
+{% block title %} Detalle Usuario | Joblist.cl {% endblock %}
+{% block contenido %}
+{% load bootstrap_toolkit %}
+
+
+<div class="section ficha" >
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <h2>
+                                    {{socio.nombre}}
+                                </h2>
+                                <p class="lead">Folio: <strong>{{socio.folio}}</strong></p>
+                                <p class="lead" align='justify'>
+                                    {{socio.comentario_est}}
+                                </p>
+                                <!--<img src="http://picoshot.com/t.php?picurl={{socio.web}}" style="border: 1px solid #ccc;border-radius:7px">  -->
+                            </div>
+                            <div class="col-sm-8">
+
+                                <h3 class="page-header">Información básica</h3>
+                                <dl class="dl-horizontal">
+                                  <dt>Edad</dt>
+                                  <dd>{{edad}} años</dd>
+
+                                  <dt>Nacionalidad</dt>
+                                  <dd>{{socio.nacionalidad}}</dd>
+
+                                  <dt>Hijos</dt>
+                                  <dd>{{socio.get_tiene_hijos_display}}</dd>
+
+                                  <dt>Estado Civil</dt>
+                                  <dd>{{socio.get_estado_civil_display}}</dd>
+
+                                  <dt>Sexo</dt>
+                                  <dd>{{ socio.get_sexo_display }}</dd>
+                                </dl>
+
+                                <h3 class="page-header">Intereses</h3>
+                                <dl class="dl-horizontal">
+                                    <dt><span class="glyphicon glyphicon-briefcase"></span> Cargos buscados</dt>
+                                    {% for cargo in cargos %}
+                                        <dd>{{cargo.nombre}}</dd>
+                                    {% endfor %}
+                                    <br />
+                                    <br />
+                                    <dt><span class="glyphicon glyphicon-globe"></span> Localidades</dt>
+                                    {% for loc in localidades %}
+                                        <dd>{{loc.get_tipo_display}} {{loc.nombre}}</dd>
+                                    {% endfor %}
+                                    <br />
+                                    <br />
+                                    <dt><span class="glyphicon glyphicon-list-alt"></span> Contrato</dt>
+                                    <dd>{{socio.get_tipo_contrato_display}}</dd>
+                                    <br />
+                                    <dt><span class="glyphicon glyphicon-usd"></span> Pretención de Renta</dt>
+                                    <dd>{{socio.get_pretencion_renta_display}}</dd>
+                                </dl>
+
+
+                                {% if estudios  %}
+                                <h3 class="page-header">Educación</h3>
+                                <p>{{socio.comentario_est}}</p>
+                                    {% if estudios_escolares %}
+                                    <center><div class="panel panel-primary">
+
+                                        <div class="panel-heading">
+                                            Estudios Escolares
+                                        </div>
+                                        <div class="panel-body">
+                                            <div class="table-responsive">
+                                                <table class="table full">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Estado</th>
+                                                            <th>Grado/Título</th>
+                                                            <th>Institución</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        {% for est in estudios_escolares %}
+                                                        <tr>
+                                                            <td>{{est.get_estado_display}}</td>
+                                                            <td>{{est.titulo.nombre}}</td>
+                                                            <td>{{est.institucion.nombre}}</td>
+                                                        </tr>
+                                                        {% endfor %}
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div></center>
+                                    {% endif %}
+
+                                    {% if estudios_superiores %}
+                                    <center><div class="panel panel-primary">
+                                        <div class="panel-heading">
+                                            Estudios Superiores
+                                        </div>
+                                        <div class="panel-body">
+                                            <div class="table-responsive">
+                                                <table class="table full">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Estado</th>
+                                                            <th>Grado/Título</th>
+                                                            <th>Institución</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        {% for est in estudios_superiores %}
+                                                        <tr>
+                                                            <td>{{est.get_estado_display}}</td>
+                                                            <td>{{est.titulo.nombre}}</td>
+                                                            <td>{{est.institucion.nombre}}</td>
+                                                        </tr>
+                                                        {% endfor %}
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div></center>
+                                    {% endif %}
+                                {% endif %}
+
+                                <h3 class="page-header">Experiencia</h3>
+                                {% if experiencia %}
+                                <h4>Experiencia laboral</h4>
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <div class="table-responsive">
+                                            <table class="table full">
+                                                <thead>
+                                                      <tr>
+                                                        <th>Periodo</th>
+                                                        <th>Rubro</th>
+                                                        <th>Cargo</th>
+                                                        <th>Comentario</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {% for exp in experiencia %}
+                                                    <tr>
+                                                        <td>{{exp.desde}}-{{exp.hasta}}</td>
+                                                        <td>{{exp.rubro.nombre}}</td>
+                                                        <td>{{exp.cargo.nombre}}</td>
+                                                        <td>{{exp.comentario}}</td>
+                                                    </tr>
+                                                    {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endif %}
+                                {% if habilidades %}
+                                <h4>Otras habilidades</h4>
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <div class="table-responsive">
+                                            <table class="table full">
+                                                <thead>
+                                                      <tr>
+                                                        <th>Tipo</th>
+                                                        <th>Habilidad</th>
+                                                        <th>Nivel</th>
+                                                        <th>Idioma</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {% for hab in habilidades %}
+                                                        <td>{{hab.habilidad.tipoHabilidad.nombre}}</td>
+                                                        <td>{{hab.habilidad.nombre}}</td>
+                                                        <td>{{hab.get_nivel_display}}</td>
+                                                        <td>{{Idioma.get_nivel_display}}</td>
+                                                    {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endif %}
+
+                                <br>
+
+                                <div class="panel panel-success hidden-print">
+                                    <div class="panel-heading">
+                                        <h4>Envía un mensaje a {{socio.nombre}}</h4>
+                                    </div>
+                                    <div id="mail" class="panel-body">
+                                        <form class="form-horizontal" id="id_form" role="form" onsubmit="return false;">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="id_user" value="{{socio.id}}">
+                                          <div class="form-group form-group-lg">
+                                            <div class="col-sm-6">
+                                              <input name="nombre" id="input-nombre"  class="form-control" type="text" placeholder="Nombre">
+                                            </div>
+                                            <div class="col-sm-6">
+                                              <input name="contacto" id="input-contacto"  class="form-control" type="text" placeholder="Teléfono o E-Mail">
+                                            </div>
+                                          </div>
+                                          <div class="form-group form-group-sm">
+                                            <div class="col-sm-12">
+                                              <textarea name="mensaje" id="text-mensaje" class="form-control" rows="3" placeholder="Mensaje"></textarea>
+                                            </div>
+                                          </div>
+                                        </form>
+                                    </div>
+                                    <div class="panel-footer text-right">
+                                        <a href="#" id="enviarPM" class="btn btn-success">Enviar mensaje</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-footer text-right hidden-print">
+                        <a href="{% url 'busqueda_avanzada' %}" class="btn btn-primary">Volver a buscar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <!--
+            {% if socio.telefono %}
+            <div id="fono" class="tab-pane fade">
+                <form class="contact_form" id="id_form" onsubmit="return false;">
+                    <input name="nombre" id="input-nombre" type="text" placeholder="Nombre"><br />
+                    <input type="text" name="contacto" id="input-contacto" placeholder="Dato de contacto"><br />
+                    <textarea name="mensaje" id="text-mensaje" placeholder="Escriba su mensaje..." style="resize:none;"></textarea>
+                    <input type="hidden" name="id_user" value="{{socio.id}}">
+                <br />
+                <a href="#" id="enviarPM" >Enviar ></a>
+                </form>
+            </div>
+            {% endif %}
+            -->
+
+        <!--<a data-toggle="modal" href="#myModal" class="btn btn-primary btn-large">Launch demo modal</a>-->
+    <!--</div>-->
+</div>
+
+{% endblock %}
+{% block SCRIPT %}
+<script type="text/javascript">
+    $('#mail a, #fono a,#web a').click(function(e){
+        e.preventDefault();
+        $(this).tab('show');
+    });
+    $('#enviarPM').click(function(event){
+        event.preventDefault();
+        $('#enviarPM').attr("disabled", "disabled");
+        var parametros = $('#id_form').serialize();
+        $.ajax({
+            url: "{% url 'enviar_mensaje_personal' %}",
+            data: parametros,
+            datatype: 'json',
+            type: 'post'
+
+        }).done(function(data){
+            //$('#myModal').modal('hide');
+            if(data == "enviado"){
+                $('#input-nombre, #input-contacto, #text-mensaje').val("");
+                $.ambiance({message: "Mensaje enviado con exito.", title:"",
+                        type: "success",timeout:4,width:200,});
+            }else{
+                $.ambiance({message: data, title:"Información",
+                        type: "info",timeout:4,width:200,});
+            }
+            $('#enviarPM').removeAttr("disabled");
+        }).fail(function(){
+            $('#myModal').modal('hide');
+            $.ambiance({message: "Error al enviar el mensaje, intentelo denuevo más tarde.", title:"Error",
+                        type: "error",timeout:4,width:200,});
+            $('#enviarPM').removeAttr("disabled");
+        });
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,175 @@
+{% extends 'template.html' %}
+{% block title %} Resultados Busqueda | MiPega.cl {% endblock %}
+
+{% block contenido %}
+{% load bootstrap_toolkit %}
+
+<div id="buscador" class="section">
+  <div class="container">
+    <!--<div class="row">
+      <div class="col-sm-4">
+          <div class="panel panel-default">
+              <div class="panel-body">
+                  <form action="." method="" role="form" class="form">
+                      <div class="form-group">
+                          <label for="inputProfesion">Profesión/Oficio</label>
+                          <input type="text" class="form-control" id="inputProfesion" placeholder="Por ejemplo: Ingeniero Eléctrico">
+                      </div>
+                      <div class="form-group">
+                          <label for="inputEdades">Seleccione rango de edades</label>
+                          <input type="text" class="form-control" id="inputEdades" placeholder="">
+                      </div>
+                      <div class="form-group">
+                          <label for="inputEdades">Seleccione rango de edades</label>
+                          <div class="radio">
+                              <label>
+                                  <input type="radio" name="optionsRadios" id="optionsRadios1" value="masculino" >
+                                  Masculino
+                              </label>
+                          </div>
+                          <div class="radio">
+                              <label>
+                                  <input type="radio" name="optionsRadios" id="optionsRadios2" value="femenino">
+                                  Femenino
+                              </label>
+                          </div>
+                          <div class="radio">
+                              <label>
+                                  <input type="radio" name="optionsRadios" id="optionsRadios2" value="indiferente" checked>
+                                  Indiferente
+                              </label>
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <label for="inputLocalidad">Localidad</label>
+                          <input type="text" class="form-control" id="inputLocalidad" placeholder="Por ejemplo: Calama">
+                      </div>
+                      <div class="form-group">
+                          <button type="submit" class="btn btn-primary">Buscar</button>
+                      </div>
+                  </form>
+              </div>
+          </div>
+
+          <div class="panel panel-default">
+              <div class="panel-body">
+                  <p>¿Conoces el número de folio de quien te interesa? ¡Utiliza este buscador!</p>
+                  <form  class="form-inline"  saction="." method="" id="folio" role="form">
+                      <div class="form-group">
+                          <input type="text" class="form-control" id="inputFolio" placeholder="Ingrese folio">
+                      </div>
+                      <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button>
+                  </form>
+              </div>
+          </div>
+      </div>
+      <div class="col-sm-8" id="resultados">-->
+      <div class="" id="resultados">
+          <div class="panel panel-default">
+                  <div class="panel-body">
+                      <h2>Resultados del {{desde}} al {{hasta}} (Total {{cant_resultados}})</h2>
+                      <table class="table">
+                          <thead>
+                              <tr>
+                                  <th>Folio</th>
+                                  <th>Nombre</th>
+                                  <th>Edad</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                            {% for r in resultados_busqueda %}
+                              <tr>
+                                  <td><a href="{% url 'vista_detalle_socio' r.id %}">{{r.folio}}</a></td>
+                                  <td>{{r.nombre}}</td>
+                                  <td>{{r.descripcion}}</td>
+                              </tr>
+                            {% endfor %}
+                          </tbody>
+                      </table>
+                      <a href="#">Generar listado Excel</a>
+                  </div>
+
+                      <div class="panel-footer text-center">
+                      <ul class="pagination">
+                        <li {% ifequal actual 1 %}class="disabled"{% endifequal %} >
+                          <a class="nav" href="{{ant}}">«</a>
+                        </li>
+                        {% for i in rango %}
+                        {% if forloop.counter0 != 0 %}
+                        <li {% ifequal actual forloop.counter0 %}class="active"{% endifequal %} >
+                          <a  class="nav" href="{{ forloop.counter0 }}">{{ forloop.counter0 }}</a>
+                        </li>
+                        {% endif %}
+                        {% endfor %}
+                        <li {% ifequal actual ult %}class="disabled"{% endifequal %} >
+                          <a  class="nav" href="{{sig}}">»</a>
+                        </li>
+                     </ul>
+                  </div>
+              </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+<!--<div style="height:180px;"></div>
+<div style="min-height:100px;">
+  <div id="indice">Resultados totales ({{cant_resultados}})</div>
+
+  <div class="">
+    {% for r in resultados_busqueda %}
+      <div class="">
+          <a href="{% url 'vista_detalle_socio' r.id %}">{{r.titulo}}</a> {{r.descripcion}}
+      </div>
+      <br />
+    {% endfor %}
+  </div>
+</div>
+<div>
+  <ul>
+    {% if ant != 1 %}{% if actual != 1 %}<li><a class="nav" href="1">primero(1)</a></li>{% endif %}{% endif %}
+    {% if ant >= 1 %}<li><a class="nav" href="{{ant}}">anterior({{ant}})</a></li>{% endif %}
+    <li>actual({{actual}})</li>
+    {% if sig != actual %}<li><a class="nav" href="{{sig}}">siguiente({{sig}})</a></li>{% endif %}
+    {% if sig != ult %}<li><a class="nav" href="{{ult}}">ultimo({{ult}})</a></li>{% endif %}
+  </ul>
+</div>-->
+{% block SCRIPT %}
+<script type="text/javascript">
+$('.nav').on('click',function(event){
+  if($(this).attr('href').indexOf("?")==-1){
+    event.preventDefault();
+    var str = window.location.search;
+    var index = str.indexOf('page=');
+    if(index != -1){
+      str1 = str.substring(0, index+5);
+      indx2=str.substring(index+5,str.lenght).indexOf("&");
+      if(indx2 == -1){
+        str2 = "";
+      }else{
+        str2 = str.substring(index+5+indx2,str.lenght);
+      }
+      var aux = $(this).attr('href');
+      $(this).attr('href',str1+aux+str2);
+      window.location.href = $(this).attr('href');
+    }else{
+      var aux = $(this).attr('href');
+      $(this).attr('href',"?page="+aux+"&"+str.substring(1));
+      window.location.href = $(this).attr('href');
+    }
+  }
+});
+</script>
+
+<script>
+    $('a.hash').bind('click', function(e) {
+           e.preventDefault();
+           $('html, body').animate({ scrollTop: $(this.hash).offset().top - 45}, 700);
+        });
+    $('#navbar').waypoint('sticky');
+</script>
+
+{% endblock %}
